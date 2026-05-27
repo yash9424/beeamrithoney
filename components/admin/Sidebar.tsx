@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, ShoppingBag, Package, Users, Settings, LogOut, ImagePlay, Tag } from 'lucide-react';
+import { LayoutDashboard, ShoppingBag, Package, Users, Settings, LogOut, ImagePlay, Tag, MessageSquare } from 'lucide-react';
 import { signOut, useSession } from 'next-auth/react';
 
 const nav = [
@@ -9,6 +9,7 @@ const nav = [
   { label: 'Orders', href: '/admin/orders', icon: ShoppingBag },
   { label: 'Inventory', href: '/admin/inventory', icon: Package },
   { label: 'Customers', href: '/admin/customers', icon: Users },
+  { label: 'Inquiries', href: '/admin/inquiries', icon: MessageSquare },
   { label: 'Hero Slides', href: '/admin/hero', icon: ImagePlay },
   { label: 'Promo Codes', href: '/admin/promos', icon: Tag },
   { label: 'Settings', href: '/admin/settings', icon: Settings },

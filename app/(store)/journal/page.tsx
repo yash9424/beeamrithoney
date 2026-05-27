@@ -24,8 +24,13 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise(r => setTimeout(r, 800));
+    const res = await fetch('/api/inquiries', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type, name: form.name, email: form.email, phone: form.phone, business: form.business, message: form.message }),
+    });
     setLoading(false);
+    if (!res.ok) return toast.error('Failed to send. Please try again.');
     setSent(true);
     toast.success(type === 'wholesale' ? 'Wholesale enquiry sent! We\'ll reply within 48 hours.' : 'Message sent! We\'ll be in touch soon.');
   };
