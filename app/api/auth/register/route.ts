@@ -6,7 +6,7 @@ import User from '@/models/User';
 // By the time this route is hit, the OTP has already been consumed and deleted.
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, password } = await req.json();
+    const { name, email, password, phone } = await req.json();
     if (!name || !email || !password) {
       return NextResponse.json({ error: 'All fields required' }, { status: 400 });
     }
@@ -21,6 +21,7 @@ export async function POST(req: NextRequest) {
       name,
       email,
       password,
+      phone: phone || undefined,
       role: isFirstUser ? 'admin' : 'user',
     });
 

@@ -9,7 +9,7 @@ import { Suspense } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 
 interface LoginForm { email: string; password: string; }
-interface RegisterForm { name: string; email: string; password: string; confirm: string; }
+interface RegisterForm { name: string; email: string; phone: string; password: string; confirm: string; }
 
 const inp = {
   width: '100%', backgroundColor: 'transparent', border: 'none',
@@ -222,7 +222,7 @@ function LoginContent() {
 
   // Register multi-step
   const [regStep, setRegStep] = useState<'form' | 'otp'>('form');
-  const [pendingReg, setPendingReg] = useState<{ name: string; email: string; password: string } | null>(null);
+  const [pendingReg, setPendingReg] = useState<{ name: string; email: string; phone: string; password: string } | null>(null);
 
   const router = useRouter();
   const loginForm = useForm<LoginForm>();
@@ -249,7 +249,7 @@ function LoginContent() {
     const json = await res.json();
     setLoading(false);
     if (!res.ok) return toast.error(json.error);
-    setPendingReg({ name: data.name, email: data.email, password: data.password });
+    setPendingReg({ name: data.name, email: data.email, phone: data.phone, password: data.password });
     setRegStep('otp');
     toast.success('Verification code sent to your email!');
   };
@@ -264,6 +264,7 @@ function LoginContent() {
       body: JSON.stringify({
         name: pendingReg.name,
         email: pendingReg.email,
+        phone: pendingReg.phone,
         password: pendingReg.password,
       }),
     });
@@ -373,6 +374,10 @@ function LoginContent() {
               <div>
                 <label style={lbl}>EMAIL ADDRESS</label>
                 <input {...regForm.register('email', { required: true, pattern: /^\S+@\S+\.\S+$/ })} placeholder="your@email.com" style={inp} />
+              </div>
+              <div>
+                <label style={lbl}>MOBILE NUMBER</label>
+                <input {...regForm.register('phone', { required: true })} type="tel" placeholder="+91 00000 00000" style={inp} />
               </div>
               <div>
                 <label style={lbl}>PASSWORD</label>
