@@ -29,11 +29,11 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            {['SHOP ALL', 'ORIGIN STORY', 'OUR FARMS', 'JOURNAL'].map((label) => {
+            {['SHOP ALL', 'ORIGIN STORY', 'ABOUT US', 'CONTACT'].map((label) => {
               const href =
                 label === 'SHOP ALL' ? '/shop' :
                 label === 'ORIGIN STORY' ? '/about' :
-                label === 'OUR FARMS' ? '/farms' : '/journal';
+                label === 'ABOUT US' ? '/about' : '/journal';
               return (
                 <Link
                   key={label}
@@ -150,7 +150,7 @@ export default function Navbar() {
         {/* Mobile menu */}
         {menuOpen && (
           <div style={{ backgroundColor: '#FAF8F4', borderTop: '1px solid #E8DFD0' }} className="md:hidden px-6 py-4 flex flex-col gap-4">
-            {[['SHOP ALL', '/shop'], ['ORIGIN STORY', '/about'], ['OUR FARMS', '/farms'], ['JOURNAL', '/journal']].map(([label, href]) => (
+            {[['SHOP ALL', '/shop'], ['ORIGIN STORY', '/about'], ['ABOUT US', '/about'], ['CONTACT', '/journal']].map(([label, href]) => (
               <Link
                 key={label}
                 href={href}
