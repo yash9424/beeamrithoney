@@ -51,6 +51,39 @@ export async function sendOrderConfirmation(to: string, order: { orderNumber: st
   });
 }
 
+export async function sendOtp(to: string, code: string, purpose: 'register' | 'reset') {
+  const transporter = getTransporter();
+  const subject = purpose === 'register' ? 'Verify your Beeamrit account' : 'Reset your Beeamrit password';
+  const heading = purpose === 'register' ? 'Confirm Your Email' : 'Password Reset Code';
+  const body = purpose === 'register'
+    ? 'Use the code below to verify your email and complete registration.'
+    : 'Use the code below to reset your password.';
+
+  if (!transporter) {
+    console.log(`📧 [DEV] OTP for ${to}: ${code}`);
+    return;
+  }
+
+  await transporter.sendMail({
+    from: `"Beeamrit" <${process.env.EMAIL_USER}>`,
+    to,
+    subject,
+    html: `
+      <div style="max-width:480px;margin:0 auto;font-family:Georgia,serif;background:#faf8f4;padding:40px 32px">
+        <h1 style="font-size:1.5rem;color:#1a0f0a;margin-bottom:4px">Beeamrit</h1>
+        <p style="font-family:Helvetica Neue,Arial,sans-serif;font-size:0.7rem;letter-spacing:0.1em;color:#9b8578;margin-bottom:28px">RARE VINTAGE ORGANIC HONEY</p>
+        <h2 style="font-size:1.2rem;color:#1a0f0a;margin-bottom:8px">${heading}</h2>
+        <p style="font-family:Helvetica Neue,Arial,sans-serif;font-size:0.85rem;color:#6b5344;line-height:1.7">${body}</p>
+        <div style="background:#3d1f0d;padding:24px;text-align:center;margin:24px 0">
+          <p style="font-family:Helvetica Neue,Arial,sans-serif;font-size:0.65rem;letter-spacing:0.15em;color:#c4a882;margin-bottom:8px">YOUR CODE</p>
+          <p style="font-family:Georgia,serif;font-size:2.5rem;color:#faf8f4;letter-spacing:0.3em;margin:0">${code}</p>
+        </div>
+        <p style="font-family:Helvetica Neue,Arial,sans-serif;font-size:0.72rem;color:#9b8578;line-height:1.7">This code expires in <strong>10 minutes</strong>. If you didn't request this, ignore this email.</p>
+      </div>
+    `,
+  });
+}
+
 export async function sendPasswordReset(to: string, token: string) {
   const transporter = getTransporter();
   const link = `${process.env.NEXTAUTH_URL}/reset-password?token=${token}`;
