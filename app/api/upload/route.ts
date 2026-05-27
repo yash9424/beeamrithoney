@@ -19,34 +19,22 @@ export async function POST(req: NextRequest) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    const uploadDir = path.join(process.cwd(), 'public', 'uploads');
-    if (!existsSync(uploadDir)) {
-      await mkdir(uploadDir, { recursive: true });
+    // Always use Cloudinary if configured
+    if (process.env.CLOUDINARY_API_KEY && process.env.CLOUDINARY_API_KEY !== 'your_api_key') {
+      const { uploadImage } = await import('@/lib/cloudinary');
+      const base64 = `data:${file.type};base64,${buffer.toString('base64')}`;
+      const cloudUrl = await uploadImage(base64);
+      return NextResponse.json({ url: cloudUrl });
     }
 
+    // Local fallback (only works in dev)
+    const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+    if (!existsSync(uploadDir)) await mkdir(uploadDir, { recursive: true });
     const ext = path.extname(file.name);
     const filename = `${Date.now()}-${Math.random().toString(36).slice(2)}${ext}`;
-    const filepath = path.join(uploadDir, filename);
-    await writeFile(filepath, buffer);
+    await writeFile(path.join(uploadDir, filename), buffer);
+    return NextResponse.json({ url: `/uploads/${filename}` });
 
-    const url = `/uploads/${filename}`;
-
-    // Try Cloudinary if configured
-    if (
-      process.env.CLOUDINARY_API_KEY &&
-      process.env.CLOUDINARY_API_KEY !== 'your_api_key'
-    ) {
-      try {
-        const { uploadImage } = await import('@/lib/cloudinary');
-        const base64 = `data:${file.type};base64,${buffer.toString('base64')}`;
-        const cloudUrl = await uploadImage(base64);
-        return NextResponse.json({ url: cloudUrl });
-      } catch {
-        // Fall through to local storage
-      }
-    }
-
-    return NextResponse.json({ url });
   } catch (err) {
     console.error(err);
     return NextResponse.json({ error: 'Upload failed' }, { status: 500 });
