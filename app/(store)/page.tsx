@@ -85,8 +85,12 @@ export default async function HomePage() {
       {/* Origin Story */}
       <section style={{ backgroundColor: '#3D1F0D' }} className="px-6 py-16 md:py-24">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <div style={{ backgroundColor: '#2A150A', aspectRatio: '4/3', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '6rem' }}>
-            🌿
+          <div style={{ backgroundColor: '#2A150A', aspectRatio: '4/3', position: 'relative', overflow: 'hidden' }}>
+            <img
+              src="/uploads/origin-story.png"
+              alt="Harvested with Quiet Respect"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+            />
           </div>
           <div>
             <p style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.62rem', letterSpacing: '0.15em', color: '#A0622A' }}>OUR ORIGIN STORY</p>

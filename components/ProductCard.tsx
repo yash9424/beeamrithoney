@@ -49,7 +49,8 @@ export default function ProductCard({ product }: { product: Product }) {
             src={product.images[0]}
             alt={product.name}
             fill
-            style={{ objectFit: 'cover', transition: 'transform 0.5s ease' }}
+            sizes="(max-width: 768px) 100vw, 33vw"
+            style={{ objectFit: 'cover', objectPosition: 'center', transition: 'transform 0.5s ease' }}
             className="group-hover:scale-105"
           />
         ) : (
