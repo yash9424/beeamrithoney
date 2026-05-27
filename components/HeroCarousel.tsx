@@ -65,7 +65,14 @@ export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
   const [animating, setAnimating] = useState(false);
   const [direction, setDirection] = useState<'left' | 'right'>('right');
+  const [mounted, setMounted] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Trigger entrance animation after mount
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 80);
+    return () => clearTimeout(t);
+  }, []);
 
   // Fetch slides from DB
   useEffect(() => {
@@ -146,6 +153,15 @@ export default function HeroCarousel() {
       onTouchEnd={onTouchEnd}
       aria-label="Hero carousel"
     >
+      {/* Dark curtain — lifts on mount */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 30,
+        backgroundColor: '#0A0503',
+        opacity: mounted ? 0 : 1,
+        transition: 'opacity 1.1s ease',
+        pointerEvents: 'none',
+      }} />
+
       {/* Background layers */}
       {slides.map((s, i) => (
         <div
@@ -166,7 +182,11 @@ export default function HeroCarousel() {
               alt={s.headline}
               fill
               priority={i === 0}
-              style={{ objectFit: 'cover', objectPosition: 'center' }}
+              style={{
+                objectFit: 'cover', objectPosition: 'center',
+                transform: mounted ? 'scale(1)' : 'scale(1.07)',
+                transition: 'transform 1.8s cubic-bezier(0.25,0.46,0.45,0.94)',
+              }}
               sizes="100vw"
             />
           )}
@@ -222,6 +242,9 @@ export default function HeroCarousel() {
             color: '#C4A882',
             padding: '5px 14px',
             marginBottom: '1.5rem',
+            opacity: mounted ? 1 : 0,
+            transform: mounted ? 'none' : 'translateY(-16px)',
+            transition: 'opacity 0.7s ease 0.1s, transform 0.7s ease 0.1s',
           }}>
             NEW HARVEST 2024
           </span>
@@ -233,12 +256,21 @@ export default function HeroCarousel() {
             lineHeight: '1.08',
             color: '#FAF8F4',
             whiteSpace: 'pre-line',
+            opacity: mounted ? 1 : 0,
+            transform: mounted ? 'none' : 'translateY(32px)',
+            transition: 'opacity 0.85s ease 0.28s, transform 0.85s cubic-bezier(0.25,0.46,0.45,0.94) 0.28s',
           }}>
             {slide.headline || 'Raw Honey.\nReal Nature.'}
           </h1>
 
-          {/* Divider */}
-          <div style={{ width: '50px', height: '2px', backgroundColor: '#A0622A', margin: '1.5rem 0' }} />
+          {/* Divider — draws left to right */}
+          <div style={{
+            width: mounted ? '50px' : '0px',
+            height: '2px',
+            backgroundColor: '#A0622A',
+            margin: '1.5rem 0',
+            transition: 'width 0.6s ease 0.7s',
+          }} />
 
           {/* Subheadline */}
           <p style={{
@@ -247,32 +279,41 @@ export default function HeroCarousel() {
             color: '#C4A882',
             lineHeight: '1.75',
             maxWidth: '480px',
+            opacity: mounted ? 1 : 0,
+            transform: mounted ? 'none' : 'translateY(20px)',
+            transition: 'opacity 0.7s ease 0.82s, transform 0.7s ease 0.82s',
           }}>
             {slide.subheadline || 'Crafted from the wild, delivered with purity.'}
           </p>
 
           {/* CTA */}
-          <Link href={slide.ctaLink || '/shop'}>
-            <button
-              type="button"
-              style={{
-                backgroundColor: '#FAF8F4',
-                color: '#3D1F0D',
-                fontFamily: 'Helvetica Neue, Arial, sans-serif',
-                fontSize: '0.7rem',
-                letterSpacing: '0.14em',
-                padding: '14px 36px',
-                border: 'none',
-                cursor: 'pointer',
-                marginTop: '2rem',
-                transition: 'background-color 0.2s ease',
-              }}
-              onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#F0E8DA'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#FAF8F4'; }}
-            >
-              {slide.cta || 'EXPLORE COLLECTION'} →
-            </button>
-          </Link>
+          <div style={{
+            opacity: mounted ? 1 : 0,
+            transform: mounted ? 'none' : 'translateY(20px)',
+            transition: 'opacity 0.7s ease 1.05s, transform 0.7s ease 1.05s',
+          }}>
+            <Link href={slide.ctaLink || '/shop'}>
+              <button
+                type="button"
+                style={{
+                  backgroundColor: '#FAF8F4',
+                  color: '#3D1F0D',
+                  fontFamily: 'Helvetica Neue, Arial, sans-serif',
+                  fontSize: '0.7rem',
+                  letterSpacing: '0.14em',
+                  padding: '14px 36px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  marginTop: '2rem',
+                  transition: 'background-color 0.2s ease',
+                }}
+                onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#F0E8DA'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#FAF8F4'; }}
+              >
+                {slide.cta || 'EXPLORE COLLECTION'} →
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
 
