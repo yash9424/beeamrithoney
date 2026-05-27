@@ -141,7 +141,7 @@ export default function AdminOrdersPage() {
                         {new Date(order.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                       </td>
                       <td style={{ padding: '1rem', fontFamily: 'Georgia, serif', fontSize: '0.9rem', color: '#1A0F0A', fontWeight: '600' }}>
-                        ${order.total?.toFixed(2)}
+                        ₹{order.total?.toFixed(2)}
                       </td>
                       <td style={{ padding: '1rem' }}>
                         <span style={{ backgroundColor: sc.bg, color: sc.text, fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.65rem', letterSpacing: '0.06em', padding: '4px 10px', textTransform: 'capitalize', whiteSpace: 'nowrap' }}>

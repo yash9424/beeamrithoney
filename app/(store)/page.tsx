@@ -59,9 +59,9 @@ export default async function HomePage() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { name: 'Wildflower Gold', desc: '350gm / Limited Selection', price: '$42' },
-              { name: 'Black Forest Rare', desc: '500gm / Vintage 2024', price: '$68' },
-              { name: 'Manuka Gold MGO 500+', desc: '250gm / Premium Grade', price: '$245' },
+              { name: 'Wildflower Gold', desc: '350gm / Limited Selection', price: '₹3,500' },
+              { name: 'Black Forest Rare', desc: '500gm / Vintage 2024', price: '₹5,800' },
+              { name: 'Manuka Gold MGO 500+', desc: '250gm / Premium Grade', price: '₹20,500' },
             ].map((p) => (
               <div key={p.name} className="group">
                 <div style={{ backgroundColor: '#F0E8DA', aspectRatio: '1', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '4rem', marginBottom: '1rem' }} className="relative overflow-hidden">

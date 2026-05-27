@@ -11,10 +11,15 @@ export function slugify(text: string): string {
 }
 
 export function formatCurrency(amount: number): string {
-  return new Intl.NumberFormat('en-US', {
+  return new Intl.NumberFormat('en-IN', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'INR',
+    maximumFractionDigits: 2,
   }).format(amount);
+}
+
+export function fmt(amount: number): string {
+  return `₹${amount.toFixed(2)}`;
 }
 
 export function cn(...classes: (string | undefined | null | false)[]): string {

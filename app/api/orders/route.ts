@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
     }
 
     const discountedSubtotal = Math.max(0, subtotal - discount);
-    const shipping = discountedSubtotal > 100 ? 0 : 12;
+    const shipping = discountedSubtotal > 1000 ? 0 : 99;
     const total = discountedSubtotal + shipping;
 
     // Create order

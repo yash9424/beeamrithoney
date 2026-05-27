@@ -37,7 +37,7 @@ export default function CartPage() {
   const { register, handleSubmit, formState: { errors } } = useForm<CheckoutForm>();
 
   const subtotal = total();
-  const shipping = subtotal > 100 ? 0 : 12;
+  const shipping = subtotal > 1000 ? 0 : 99;
   const discount = promoApplied?.discount || 0;
   const orderTotal = subtotal + shipping - discount;
 
@@ -53,7 +53,7 @@ export default function CartPage() {
     setPromoLoading(false);
     if (res.ok) {
       setPromoApplied(data);
-      toast.success(`Promo applied! You save $${data.discount.toFixed(2)}`);
+      toast.success(`Promo applied! You save ₹${data.discount.toFixed(2)}`);
     } else {
       toast.error(data.error);
     }
@@ -150,7 +150,7 @@ export default function CartPage() {
                           </span>
                         )}
                       </div>
-                      <p style={{ fontFamily: 'Georgia, serif', fontSize: '1rem', color: '#1A0F0A' }}>${(item.price * item.quantity).toFixed(2)}</p>
+                      <p style={{ fontFamily: 'Georgia, serif', fontSize: '1rem', color: '#1A0F0A' }}>₹{(item.price * item.quantity).toFixed(2)}</p>
                     </div>
                     <div className="flex items-center justify-between mt-3">
                       <div style={{ border: '1px solid #C4A882', display: 'flex', alignItems: 'center' }}>
@@ -347,9 +347,9 @@ export default function CartPage() {
 
               <div className="space-y-3">
                 {[
-                  { label: 'Subtotal', value: `$${subtotal.toFixed(2)}` },
-                  { label: 'Boutique Shipping', value: shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}` },
-                  ...(promoApplied ? [{ label: `Promo (${promoApplied.code})`, value: `-$${discount.toFixed(2)}`, green: true }] : []),
+                  { label: 'Subtotal', value: `₹${subtotal.toFixed(2)}` },
+                  { label: 'Boutique Shipping', value: shipping === 0 ? 'FREE' : `₹${shipping.toFixed(2)}` },
+                  ...(promoApplied ? [{ label: `Promo (${promoApplied.code})`, value: `-₹${discount.toFixed(2)}`, green: true }] : []),
                 ].map(({ label, value, green }: { label: string; value: string; green?: boolean }) => (
                   <div key={label} className="flex justify-between">
                     <span style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.78rem', color: green ? '#34D399' : '#C4A882' }}>{label}</span>
@@ -359,7 +359,7 @@ export default function CartPage() {
               </div>
               <div style={{ borderTop: '1px solid rgba(255,255,255,0.15)', marginTop: '1.25rem', paddingTop: '1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
                 <span style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.65rem', letterSpacing: '0.12em', color: '#C4A882' }}>TOTAL AMOUNT</span>
-                <span style={{ fontFamily: 'Georgia, serif', fontSize: '2rem', color: '#FAF8F4' }}>${orderTotal.toFixed(2)}</span>
+                <span style={{ fontFamily: 'Georgia, serif', fontSize: '2rem', color: '#FAF8F4' }}>₹{orderTotal.toFixed(2)}</span>
               </div>
 
               <button

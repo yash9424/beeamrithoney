@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Promo code limit reached' }, { status: 400 });
     }
     if (subtotal < promo.minOrder) {
-      return NextResponse.json({ error: `Minimum order $${promo.minOrder} required` }, { status: 400 });
+      return NextResponse.json({ error: `Minimum order ₹${promo.minOrder} required` }, { status: 400 });
     }
     const discount = promo.type === 'percent'
       ? Math.round((subtotal * promo.value) / 100 * 100) / 100

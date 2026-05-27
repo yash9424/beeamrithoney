@@ -22,12 +22,12 @@ export async function sendOrderConfirmation(to: string, order: { orderNumber: st
   const transporter = getTransporter();
   if (!transporter) {
     console.log(`📧 [DEV] Order confirmation email would be sent to: ${to}`);
-    console.log(`   Order #${order.orderNumber} — $${order.total.toFixed(2)}`);
+    console.log(`   Order #${order.orderNumber} — ₹${order.total.toFixed(2)}`);
     return;
   }
 
   const itemRows = order.items.map(i =>
-    `<tr><td style="padding:8px 0;border-bottom:1px solid #f0e8da">${i.name}</td><td style="padding:8px 0;border-bottom:1px solid #f0e8da;text-align:right">×${i.quantity}</td><td style="padding:8px 0;border-bottom:1px solid #f0e8da;text-align:right">$${(i.price * i.quantity).toFixed(2)}</td></tr>`
+    `<tr><td style="padding:8px 0;border-bottom:1px solid #f0e8da">${i.name}</td><td style="padding:8px 0;border-bottom:1px solid #f0e8da;text-align:right">×${i.quantity}</td><td style="padding:8px 0;border-bottom:1px solid #f0e8da;text-align:right">₹${(i.price * i.quantity).toFixed(2)}</td></tr>`
   ).join('');
 
   await transporter.sendMail({
@@ -43,7 +43,7 @@ export async function sendOrderConfirmation(to: string, order: { orderNumber: st
         <table style="width:100%;border-collapse:collapse;margin:24px 0">${itemRows}</table>
         <div style="background:#3d1f0d;padding:16px 20px;display:flex;justify-content:space-between">
           <span style="font-family:Helvetica Neue,Arial,sans-serif;font-size:0.72rem;letter-spacing:0.1em;color:#c4a882">TOTAL</span>
-          <span style="font-family:Georgia,serif;font-size:1.2rem;color:#faf8f4">$${order.total.toFixed(2)}</span>
+          <span style="font-family:Georgia,serif;font-size:1.2rem;color:#faf8f4">₹${order.total.toFixed(2)}</span>
         </div>
         <p style="font-family:Helvetica Neue,Arial,sans-serif;font-size:0.75rem;color:#9b8578;margin-top:24px;line-height:1.7">Thank you for choosing Beeamrit. Your honey is being packed in 100% biodegradable materials and will ship soon.</p>
       </div>

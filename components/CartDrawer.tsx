@@ -79,7 +79,7 @@ export default function CartDrawer() {
                         </span>
                       )}
                       <p style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.8rem', color: '#5C3317', marginTop: '0.25rem' }}>
-                        ${item.price.toFixed(2)}
+                        ₹{item.price.toFixed(2)}
                       </p>
 
                       <div className="flex items-center justify-between mt-3">
@@ -121,7 +121,7 @@ export default function CartDrawer() {
           <div style={{ borderTop: '1px solid #E8DFD0' }} className="px-6 py-6">
             <div className="flex justify-between mb-2">
               <span style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.75rem', letterSpacing: '0.06em', color: '#6B5344' }}>SUBTOTAL</span>
-              <span style={{ fontFamily: 'Georgia, serif', fontSize: '1rem', color: '#1A0F0A' }}>${total().toFixed(2)}</span>
+              <span style={{ fontFamily: 'Georgia, serif', fontSize: '1rem', color: '#1A0F0A' }}>₹{total().toFixed(2)}</span>
             </div>
             <p style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.65rem', color: '#9B8578', marginBottom: '1rem' }}>
               Shipping calculated at checkout

@@ -102,7 +102,7 @@ export default function AdminDashboard() {
         <div style={{ backgroundColor: '#FAF8F4', border: '1px solid #E8DFD0', padding: '2rem' }}>
           <p style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.62rem', letterSpacing: '0.15em', color: '#9B8578' }}>QUARTERLY REVENUE</p>
           <p style={{ fontFamily: 'Georgia, serif', fontSize: '2.2rem', color: '#1A0F0A', marginTop: '0.5rem' }}>
-            ${stats.quarterlyRevenue.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+            ₹{stats.quarterlyRevenue.toLocaleString('en-IN', { minimumFractionDigits: 2 })}
           </p>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '1.5rem' }}>
             <TrendingUp size={14} style={{ color: '#27AE60' }} />
@@ -179,10 +179,10 @@ export default function AdminDashboard() {
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="#F0E8DA" />
               <XAxis dataKey="month" tick={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: 10, fill: '#9B8578' }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: 10, fill: '#9B8578' }} axisLine={false} tickLine={false} tickFormatter={v => `$${v}`} />
+              <YAxis tick={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: 10, fill: '#9B8578' }} axisLine={false} tickLine={false} tickFormatter={v => `₹${v}`} />
               <Tooltip
                 contentStyle={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.75rem', border: '1px solid #E8DFD0', borderRadius: 0 }}
-                formatter={(v) => [`$${Number(v).toLocaleString()}`, 'Revenue']}
+                formatter={(v) => [`₹${Number(v).toLocaleString('en-IN')}`, 'Revenue']}
               />
               <Area type="monotone" dataKey="revenue" stroke="#5C3317" strokeWidth={2} fill="url(#revGrad)" />
             </AreaChart>
@@ -249,7 +249,7 @@ export default function AdminDashboard() {
                       {new Date(order.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                     </td>
                     <td style={{ padding: '1rem', fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.85rem', color: '#1A0F0A', fontWeight: '600' }}>
-                      ${order.total.toFixed(2)}
+                      ₹{order.total.toFixed(2)}
                     </td>
                     <td style={{ padding: '1rem' }}>
                       <span style={{ backgroundColor: sc.bg, color: sc.text, fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.65rem', letterSpacing: '0.06em', padding: '4px 10px', textTransform: 'capitalize' }}>

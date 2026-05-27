@@ -37,8 +37,8 @@ export default function AdminSettingsPage() {
           <h2 style={{ fontFamily: 'Georgia, serif', fontSize: '1.1rem', color: '#1A0F0A', marginBottom: '1rem' }}>Store Information</h2>
           {[
             { label: 'STORE NAME', value: 'Beeamrit' },
-            { label: 'CURRENCY', value: 'USD ($)' },
-            { label: 'SHIPPING THRESHOLD', value: '$100 (free above)' },
+            { label: 'CURRENCY', value: 'INR (₹)' },
+            { label: 'SHIPPING THRESHOLD', value: '₹1,000 (free above)' },
             { label: 'ECO-PACKAGING', value: 'Included (no charge)' },
           ].map(({ label, value }) => (
             <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.75rem 0', borderBottom: '1px solid #F5F0E8' }}>

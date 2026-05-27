@@ -19,7 +19,7 @@ function OrderSuccessContent() {
           <div style={{ backgroundColor: '#3D1F0D', padding: '1.25rem 2rem', margin: '2rem auto', display: 'inline-block' }}>
             <p style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.6rem', letterSpacing: '0.15em', color: '#A0622A' }}>ORDER NUMBER</p>
             <p style={{ fontFamily: 'Georgia, serif', fontSize: '1.5rem', color: '#FAF8F4', marginTop: '0.25rem' }}>#{orderNumber}</p>
-            {total && <p style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.85rem', color: '#C4A882', marginTop: '0.25rem' }}>Total: ${parseFloat(total).toFixed(2)}</p>}
+            {total && <p style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.85rem', color: '#C4A882', marginTop: '0.25rem' }}>Total: ₹{parseFloat(total).toFixed(2)}</p>}
           </div>
         )}
         <p style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.82rem', color: '#6B5344', lineHeight: '1.8', marginBottom: '2.5rem' }}>

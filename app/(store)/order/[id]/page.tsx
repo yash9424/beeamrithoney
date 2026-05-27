@@ -87,21 +87,21 @@ export default function OrderDetailPage() {
                   <p style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.82rem', color: '#1A0F0A' }}>{item.name}</p>
                   <p style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.68rem', color: '#9B8578', marginTop: '2px' }}>{item.volume} × {item.quantity}</p>
                 </div>
-                <p style={{ fontFamily: 'Georgia, serif', fontSize: '0.9rem', color: '#1A0F0A' }}>${(item.price * item.quantity).toFixed(2)}</p>
+                <p style={{ fontFamily: 'Georgia, serif', fontSize: '0.9rem', color: '#1A0F0A' }}>₹{(item.price * item.quantity).toFixed(2)}</p>
               </div>
             ))}
             <div style={{ paddingTop: '0.75rem', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.75rem', color: '#9B8578' }}>Subtotal</span>
-                <span style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.8rem', color: '#1A0F0A' }}>${order.subtotal.toFixed(2)}</span>
+                <span style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.8rem', color: '#1A0F0A' }}>₹{order.subtotal.toFixed(2)}</span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.75rem', color: '#9B8578' }}>Shipping</span>
-                <span style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.8rem', color: '#1A0F0A' }}>{order.shipping === 0 ? 'FREE' : `$${order.shipping.toFixed(2)}`}</span>
+                <span style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.8rem', color: '#1A0F0A' }}>{order.shipping === 0 ? 'FREE' : `₹${order.shipping.toFixed(2)}`}</span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid #E8DFD0', paddingTop: '0.5rem', marginTop: '0.25rem' }}>
                 <span style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.72rem', letterSpacing: '0.08em', color: '#3D1F0D' }}>TOTAL</span>
-                <span style={{ fontFamily: 'Georgia, serif', fontSize: '1.1rem', color: '#1A0F0A' }}>${order.total.toFixed(2)}</span>
+                <span style={{ fontFamily: 'Georgia, serif', fontSize: '1.1rem', color: '#1A0F0A' }}>₹{order.total.toFixed(2)}</span>
               </div>
             </div>
           </div>

@@ -160,7 +160,7 @@ export default function AccountPage() {
                       <span style={{ backgroundColor: `${STATUS_COLORS[orders[0].status] || '#9B8578'}20`, color: STATUS_COLORS[orders[0].status] || '#9B8578', fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.65rem', letterSpacing: '0.1em', padding: '4px 12px', textTransform: 'capitalize' }}>
                         {orders[0].status}
                       </span>
-                      <p style={{ fontFamily: 'Georgia, serif', fontSize: '1rem', color: '#1A0F0A' }}>${orders[0].total.toFixed(2)}</p>
+                      <p style={{ fontFamily: 'Georgia, serif', fontSize: '1rem', color: '#1A0F0A' }}>₹{orders[0].total.toFixed(2)}</p>
                       <ArrowRight size={16} style={{ color: '#9B8578' }} />
                     </div>
                   </div>
@@ -199,7 +199,7 @@ export default function AccountPage() {
                           <span style={{ backgroundColor: `${STATUS_COLORS[order.status] || '#9B8578'}20`, color: STATUS_COLORS[order.status] || '#9B8578', fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.65rem', letterSpacing: '0.1em', padding: '4px 12px', textTransform: 'capitalize' }}>
                             {order.status}
                           </span>
-                          <p style={{ fontFamily: 'Georgia, serif', fontSize: '1.1rem', color: '#1A0F0A' }}>${order.total.toFixed(2)}</p>
+                          <p style={{ fontFamily: 'Georgia, serif', fontSize: '1.1rem', color: '#1A0F0A' }}>₹{order.total.toFixed(2)}</p>
                           <ArrowRight size={16} style={{ color: '#9B8578' }} />
                         </div>
                       </div>
@@ -251,7 +251,7 @@ export default function AccountPage() {
                       <Link href={`/product/${product.slug}`} style={{ textDecoration: 'none' }}>
                         <p style={{ fontFamily: 'Georgia, serif', fontSize: '0.95rem', color: '#1A0F0A' }}>{product.name}</p>
                       </Link>
-                      <p style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.82rem', color: '#5C3317', marginTop: '0.25rem' }}>${product.price.toFixed(2)}</p>
+                      <p style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.82rem', color: '#5C3317', marginTop: '0.25rem' }}>₹{product.price.toFixed(2)}</p>
                       <div style={{ display: 'flex', gap: '8px', marginTop: '0.75rem' }}>
                         <button
                           type="button"
