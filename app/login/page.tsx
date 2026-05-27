@@ -325,7 +325,7 @@ function LoginContent() {
                   </button>
                 </div>
                 <div style={{ position: 'relative' }}>
-                  <input {...loginForm.register('password', { required: true })} type={showPw ? 'text' : 'password'} placeholder="••••••••" style={{ ...inp, paddingRight: '2rem' }} />
+                  <input {...loginForm.register('password', { required: true })} type={showPw ? 'text' : 'password'} placeholder="Enter your password" style={{ ...inp, paddingRight: '2rem' }} />
                   <button type="button" onClick={() => setShowPw(v => !v)} style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: '#9B8578' }}>
                     {showPw ? <EyeOff size={15} /> : <Eye size={15} />}
                   </button>
@@ -335,7 +335,7 @@ function LoginContent() {
               <button type="submit" disabled={loading}
                 style={{ width: '100%', backgroundColor: '#5C3317', color: '#FAF8F4', fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.72rem', letterSpacing: '0.12em', padding: '16px', marginTop: '0.5rem', cursor: loading ? 'wait' : 'pointer', border: 'none' }}
                 className="hover:bg-[#3D1F0D] transition-colors disabled:opacity-60">
-                {loading ? 'ENTERING...' : 'ENTER THE HIVE'}
+                {loading ? 'LOGGING IN...' : 'LOGIN'}
               </button>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', margin: '1rem 0' }}>
