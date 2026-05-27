@@ -351,41 +351,6 @@ export default function ProductPage() {
         </div>
       </div>
 
-      {/* Story section */}
-      <section style={{ backgroundColor: '#F5F0E8' }} className="px-6 py-16">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <p style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.62rem', letterSpacing: '0.15em', color: '#9B8578' }}>THE ALCHEMY OF NATURE</p>
-            <h2 style={{ fontFamily: 'Georgia, serif', fontSize: '2.2rem', color: '#1A0F0A', lineHeight: '1.2', marginTop: '0.5rem' }}>
-              Crafted by Wind,<br />Sun, and Bee
-            </h2>
-            <p style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.82rem', color: '#6B5344', lineHeight: '1.8', marginTop: '1rem' }}>
-              At Beeamrit, we believe in the &quot;Slow Honey&quot; movement. Our bees forage in protected sanctuaries where the air is thin and the flora is untouched by modern agriculture.
-            </p>
-            <p style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.82rem', color: '#6B5344', lineHeight: '1.8', marginTop: '0.75rem' }}>
-              The harvest process is an exercise in patience. We only extract surplus honey after the colony has secured its winter stores. Each jar is hand-filled and sealed with a custom-stamped metallic cap.
-            </p>
-            <Link href="/about" style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.72rem', color: '#3D1F0D', textDecoration: 'underline', textUnderlineOffset: '4px', display: 'inline-block', marginTop: '1.25rem' }}>
-              Learn about our sustainability →
-            </Link>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div style={{ backgroundColor: '#3D1F0D', aspectRatio: '1', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '4rem' }}>🌄</div>
-            <div className="space-y-4">
-              {[
-                { title: 'Highland Terroir', desc: 'Floral notes unique to our hives.' },
-                { title: 'Purity First', desc: 'Zero filtration, zero additives.' },
-              ].map((item) => (
-                <div key={item.title} style={{ backgroundColor: '#FAF8F4', padding: '1rem' }}>
-                  <p style={{ fontFamily: 'Georgia, serif', fontSize: '0.9rem', color: '#1A0F0A' }}>{item.title}</p>
-                  <p style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.72rem', color: '#6B5344', marginTop: '0.25rem' }}>{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Reviews section */}
       <section style={{ backgroundColor: '#FAF8F4' }} className="px-6 py-16">
         <div className="max-w-7xl mx-auto">
