@@ -25,7 +25,7 @@
 .env*.local
 
 # ─── Uploads / user-generated content ───────────────────────
-/public/uploads/
+# /public/uploads/ is intentionally tracked for static site images
 /uploads/
 
 # ─── TypeScript ─────────────────────────────────────────────
