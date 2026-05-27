@@ -40,8 +40,13 @@ export default function ContactPage() {
 
       {/* Hero */}
       <section style={{ backgroundColor: '#1A0F0A', position: 'relative', overflow: 'hidden', padding: 'clamp(4rem, 10vw, 7rem) 1.5rem' }}>
-        <div style={{ position: 'absolute', right: '-2rem', top: '50%', transform: 'translateY(-50%)', fontSize: 'clamp(10rem, 22vw, 20rem)', opacity: 0.05, userSelect: 'none', lineHeight: 1 }}>🍯</div>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(120deg, rgba(61,31,13,0.6) 0%, transparent 70%)' }} />
+        <img
+          src="/uploads/contact-hero.png"
+          alt=""
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+          onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+        />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(120deg, rgba(26,15,10,0.88) 0%, rgba(61,31,13,0.65) 60%, rgba(0,0,0,0.4) 100%)' }} />
         <div className="max-w-6xl mx-auto" style={{ position: 'relative', zIndex: 1 }}>
           <p style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.62rem', letterSpacing: '0.2em', color: '#A0622A', marginBottom: '1rem' }}>GET IN TOUCH</p>
           <h1 style={{ fontFamily: 'Georgia, serif', fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', color: '#FAF8F4', lineHeight: '1.1', maxWidth: '600px' }}>

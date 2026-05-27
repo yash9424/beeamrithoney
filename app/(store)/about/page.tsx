@@ -61,8 +61,13 @@ export default function AboutPage() {
 
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <section style={{ backgroundColor: '#1A0F0A', position: 'relative', overflow: 'hidden', padding: 'clamp(5rem, 12vw, 9rem) 1.5rem' }}>
-        <div style={{ position: 'absolute', right: '-3rem', top: '50%', transform: 'translateY(-50%)', fontSize: 'clamp(12rem, 28vw, 26rem)', opacity: 0.05, userSelect: 'none', lineHeight: 1 }}>🍯</div>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(120deg, rgba(61,31,13,0.55) 0%, transparent 65%)' }} />
+        {/* Hero background image — place at public/uploads/about-hero.jpg, ideal 1440×700px */}
+        <img
+          src="/uploads/about-hero.png"
+          alt=""
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+        />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(120deg, rgba(26,15,10,0.88) 0%, rgba(61,31,13,0.65) 60%, rgba(0,0,0,0.4) 100%)' }} />
         <div className="max-w-6xl mx-auto" style={{ position: 'relative', zIndex: 1, display: 'grid', gap: '3rem' }} >
           <div>
             <p style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.62rem', letterSpacing: '0.2em', color: '#A0622A', marginBottom: '1rem' }}>OUR STORY</p>
@@ -80,12 +85,7 @@ export default function AboutPage() {
                   EXPLORE COLLECTION →
                 </button>
               </Link>
-              <Link href="/farms">
-                <button style={{ backgroundColor: 'transparent', color: '#FAF8F4', fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.7rem', letterSpacing: '0.14em', padding: '14px 32px', border: '1px solid rgba(250,248,244,0.3)', cursor: 'pointer' }}
-                  className="hover:border-[#FAF8F4] transition-colors">
-                  OUR FARMS
-                </button>
-              </Link>
+
             </div>
           </div>
         </div>

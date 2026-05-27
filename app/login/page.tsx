@@ -420,7 +420,15 @@ function LoginContent() {
 function LeftPanel() {
   return (
     <div style={{ backgroundColor: '#3D1F0D', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'flex-end', padding: '3rem' }} className="max-md:hidden">
-      <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12rem', opacity: 0.3 }}>🍯</div>
+      {/* Background image — place your photo at public/uploads/login-panel.jpg */}
+      <img
+        src="/uploads/login-panel.png"
+        alt=""
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+        onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+      />
+      {/* Dark overlay so text stays readable */}
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(26,15,10,0.85) 0%, rgba(61,31,13,0.45) 60%, rgba(0,0,0,0.2) 100%)' }} />
       <div style={{ position: 'relative', zIndex: 1 }}>
         <p style={{ fontFamily: 'Helvetica Neue, Arial, sans-serif', fontSize: '0.62rem', letterSpacing: '0.15em', color: '#A0622A', marginBottom: '0.75rem' }}>THE ORIGIN STORY</p>
         <h2 style={{ fontFamily: 'Georgia, serif', fontSize: '2rem', color: '#FAF8F4', fontStyle: 'italic', lineHeight: '1.3' }}>Crafted by nature,<br />bottled in silence.</h2>
